@@ -65,7 +65,21 @@ class LinkedList:
             self.head=new_node
         self.length+=1
         return True
-        
+    
+    #Popping a node from the beginning of the linked list
+    def pop_first(self):
+        #if there's no node present in the linked list
+        if(self.length==0):
+            return None
+        #if there's one or more nodes present in the linked list
+        temp=self.head
+        self.head=self.head.next
+        temp.next=None#the first node now doesnt point towards any other node
+        self.length-=1
+        #No we write the code if there was only one node in the linked list,the previous part would make the length count go to 0
+        if(self.length==0):
+            self.tail=None
+        return temp
 
 #Creating a linked list and printing it's value
 print("Creating the Linked list")
@@ -89,3 +103,7 @@ print("Prepending a node to the linked list")
 my_linked_list.prepend(3)
 my_linked_list.print_list()
 
+#popping the first node from the linked list
+print("Popping the first node from the linked list")
+my_linked_list.pop_first()
+my_linked_list.print_list()
