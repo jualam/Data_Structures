@@ -98,8 +98,16 @@ class DoublyLinkedList:
             for _ in range(self.length-1,index,-1):
                 temp=temp.prev
         return temp
-
-        
+    
+    #set a value at a particular index for that node
+    def set_value(self,index,value):
+        temp=self.get(index)
+        #if temp is not out of index
+        if temp:
+            temp.value=value
+            return True
+        return False
+      
     
 #Creating a doubly linked list using the constructor
 print("Creating the doubly linked list")
@@ -136,6 +144,13 @@ my_dll.print_list()
 print("\nGetting a node from a particular index from the list")
 print(my_dll.get(1).value)
 print(my_dll.get(2).value)
+
+#set a value at a particular index for that node
+print("\nSetting a value at a particular index for that node")
+my_dll.print_list()
+my_dll.set_value(2,25)
+print("\nAfter changing the value of the node at index 2")
+my_dll.print_list()
 
 
 
