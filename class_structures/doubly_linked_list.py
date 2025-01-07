@@ -107,7 +107,24 @@ class DoublyLinkedList:
             temp.value=value
             return True
         return False
-      
+    
+    #inserting a new node at a particular index
+    def insert (self,index,value):
+        if index<0 or index>self.length:
+            return False
+        elif index==0:
+            return self.prepend(value)
+        elif index==self.length:
+            return self.append(value)
+        new_node=Node(value)
+        before=self.get(index-1)
+        after=before.next
+        new_node.prev=before
+        new_node.next=after
+        before.next=new_node
+        after.prev=new_node
+        self.length+=1
+        return True
     
 #Creating a doubly linked list using the constructor
 print("Creating the doubly linked list")
@@ -150,6 +167,11 @@ print("\nSetting a value at a particular index for that node")
 my_dll.print_list()
 my_dll.set_value(2,25)
 print("\nAfter changing the value of the node at index 2")
+my_dll.print_list()
+
+#inserting a new node at a particular index
+print("\nInserting a new node at a particular index")
+my_dll.insert(3,36)
 my_dll.print_list()
 
 
