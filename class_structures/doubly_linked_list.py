@@ -126,6 +126,25 @@ class DoublyLinkedList:
         self.length+=1
         return True
     
+    #remove a node from a particular index
+    def remove(self,index):
+        if index<0 or index>=self.length:
+            return None
+        elif index==0:
+            return self.pop_first()
+        elif index==self.length-1:
+            return self.pop()
+        temp=self.get(index)
+        before=temp.prev
+        after=temp.next
+        before.next=after
+        after.prev=before
+        temp.next=None
+        temp.prev=None
+        self.length-=1
+        return temp
+
+    
 #Creating a doubly linked list using the constructor
 print("Creating the doubly linked list")
 my_dll=DoublyLinkedList(6)
